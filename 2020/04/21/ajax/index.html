@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme-color" content=#58b77a>
-  <title>kitao·blog</title>
+  <title>Ajax学习笔记 | kitao·blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="kitao">
   <meta name="keywords" content="">
@@ -62,31 +62,28 @@
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
 <meta name="generator" content="Hexo 4.2.0"></head>
 <body>
-<div id="page">
+<div class="single">
 
-<div id="lx-aside" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/cover.jpeg)">
+<div id="page">
+<div id="lx-aside" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/post_cover.jpeg)" data-stellar-background-ratio="0.5">
   <div class="overlay">
-  <div class="featured">
+  <div class="page-title">
     <div class="avatar"><a href="/"><img src="/images/avatar.jpeg"></a></div>
-    <span>kitao</span>
-    <h1>kitao·blog</h1>
+    <span>2020-04-21</span>
+    <h2>Ajax学习笔记</h2>
     
     <div class="social-links">
     <a href="https://github.com/Gitkitao" target="_blank"><i class="fa fa-github fa-fw"></i></a>
     <a href="mailto:854098448@qq.com" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+</div></div>
 </div>
-  </div>
-  </div>
 </div>
 
 <div id="lx-main-content">
   <div class="lx-post">
-
-  <div class="lx-entry padding">
-    <div>
-      <h2 class="title"><a href="/2020/04/21/ajax/">Ajax学习笔记</a></h2>
-      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-04-21</span>
-      <p><h1 id="Ajax概述"><a href="#Ajax概述" class="headerlink" title="Ajax概述"></a>Ajax概述</h1><p>Ajax：它是浏览器提供的一套方法你可以实现页面无刷新更新数据，提高用 户浏览网站应用的体验</p>
+    <div class="lx-entry padding">
+      <div>
+        <h1 id="Ajax概述"><a href="#Ajax概述" class="headerlink" title="Ajax概述"></a>Ajax概述</h1><p>Ajax：它是浏览器提供的一套方法你可以实现页面无刷新更新数据，提高用 户浏览网站应用的体验</p>
 <h2 id="Ajax应用场景"><a href="#Ajax应用场景" class="headerlink" title="Ajax应用场景"></a>Ajax应用场景</h2><ol>
 <li>页面上拉加载更多数据</li>
 <li>列表数据无刷新分页</li>
@@ -135,34 +132,41 @@
 <h2 id="同步异步概述"><a href="#同步异步概述" class="headerlink" title="同步异步概述"></a>同步异步概述</h2><h3 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h3>一个人同一时间只能做一件事，只有一件事做完才能做另一件事<br>对于代码来说，就是上一行代码完成，才能执行下一行代码，即逐行执行<h3 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h3>一个人一件事情做了一半，转而去做其他事情，当其他事情完成后，再回头来继续完成之前未完成的事。<br>对于代码来说，就是异步代码虽然需要花时间去执行，但程序不会等异步代码结束再继续执<br>后续代码，而是直接执行后续代码，当后续代码执行结束之后，再回头看异步代码是否返回<br>结果，如果已经返回结果，再调用事先准备好的回调函数处理异步代码执行结果。<h2 id="Ajax封装"><a href="#Ajax封装" class="headerlink" title="Ajax封装"></a>Ajax封装</h2>问题：发送一次请求代码过多，多次请求代码冗余复杂。<br>解决方案：将请求代码封装到函数中，发送请求时调用即可<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">function ajax(options) &#123;</span><br><span class="line">    var defaults &#x3D; &#123; &#x2F;&#x2F;存储默认值</span><br><span class="line">        type: &#39;get&#39;,</span><br><span class="line">        url: &#39;&#39;,</span><br><span class="line">        data: &#39;&#39;,</span><br><span class="line">        header: &#123;</span><br><span class="line">            &#39;Content-Type&#39;: &#39;application&#x2F;x-www-form-urlencoded&#39;</span><br><span class="line">        &#125;,</span><br><span class="line">        success: function() &#123;&#125;,</span><br><span class="line">       error: function() &#123;&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    &#x2F;&#x2F; 使用options对象中的属性，覆盖defaults对象</span><br><span class="line">    Object.assign(defaults, options);</span><br><span class="line">    var xhr &#x3D; new XMLHttpRequest();</span><br><span class="line">    &#x2F;&#x2F;拼接请求参数的变量</span><br><span class="line">    var params &#x3D; &#39;&#39;;</span><br><span class="line">    &#x2F;&#x2F;循环用户传递进来的对象格式参数</span><br><span class="line">    for (var attr in defaults.data) &#123;</span><br><span class="line">        &#x2F;&#x2F;将数据格式转换为字符串格式</span><br><span class="line">        params +&#x3D; attr + &#39;&#x3D;&#39; + defaults.data[attr] + &#39;&amp;&#39;;</span><br><span class="line">    &#125;;</span><br><span class="line">    &#x2F;&#x2F;将参数最后的&amp;截取掉</span><br><span class="line">    params &#x3D; params.substr(0, params.length - 1);</span><br><span class="line">    &#x2F;&#x2F;如果请求方式为get</span><br><span class="line">    if (defaults.type &#x3D;&#x3D; &#39;get&#39;) &#123;</span><br><span class="line">        &#x2F;&#x2F;将请求参数添加到请求地址后面</span><br><span class="line">        defaults.url &#x3D; defaults.url + &#39;?&#39; + params;</span><br><span class="line">    &#125;</span><br><span class="line">    xhr.open(defaults.type, defaults.url);</span><br><span class="line">    &#x2F;&#x2F;如果请求方式为post</span><br><span class="line">    if (defaults.type &#x3D;&#x3D; &#39;post&#39;) &#123;</span><br><span class="line">        &#x2F;&#x2F;用户希望的向服务器传递的请求参数类型</span><br><span class="line">        var contentType &#x3D; defaults.header[&#39;Content-Type&#39;];</span><br><span class="line">        &#x2F;&#x2F;设置请求参数格式的类型</span><br><span class="line">        xhr.setRequestHeader(&#39;Content-Type&#39;, contentType);</span><br><span class="line">        &#x2F;&#x2F;判断用户希望的请求参数格式的类型</span><br><span class="line">        &#x2F;&#x2F;如果类型为json</span><br><span class="line">        if (contentType &#x3D;&#x3D; &#39;application&#x2F;json&#39;) &#123;</span><br><span class="line">            &#x2F;&#x2F;向服务器端传递json数据格式的参数</span><br><span class="line">            xhr.send(JSON.stringify(defaults.data))</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">        &#x2F;&#x2F;向服务器端传递普通类型的请求参数</span><br><span class="line">            xhr.send(params);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        xhr.send();</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;监听xhr对象下的onload事件</span><br><span class="line">    &#x2F;&#x2F;当xhr对象接收完响应数据后触发</span><br><span class="line">    xhr.onload &#x3D; function() &#123;</span><br><span class="line">        &#x2F;&#x2F;获取响应头中的数据</span><br><span class="line">        var contentType &#x3D; xhr.getResponseHeader(&#39;Content-Type&#39;);</span><br><span class="line">        var responseText &#x3D; xhr.responseText;</span><br><span class="line">        &#x2F;&#x2F;判断返回的数据时候否为json类型</span><br><span class="line">        if (contentType.includes(&#39;application&#x2F;json&#39;)) &#123;</span><br><span class="line">            &#x2F;&#x2F;将json字符串转换为json对象</span><br><span class="line">            responseText &#x3D; JSON.parse(responseText);</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;当http状态码等于200时</span><br><span class="line">        if (xhr.status &#x3D;&#x3D; 200) &#123;</span><br><span class="line">            &#x2F;&#x2F;请求成功 调用处理成功的函数</span><br><span class="line">            defaults.success(responseText, xhr);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            &#x2F;&#x2F;请求失败 调用处理失败的函数</span><br><span class="line">            defaults.error(responseText, xhr);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 调用(封装时设置了默认参数，所以有些参数可以不用传递)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">var text &#x3D; ajax(&#123;</span><br><span class="line">    type: &#39;post&#39;,</span><br><span class="line">    url: &#39;http:&#x2F;&#x2F;localhost:3000&#x2F;responseData&#39;,</span><br><span class="line">    &#x2F;&#x2F; data: &#123;</span><br><span class="line">    &#x2F;&#x2F;     name: &#39;kitao&#39;,</span><br><span class="line">    &#x2F;&#x2F;     age: 23</span><br><span class="line">    &#x2F;&#x2F; &#125;,</span><br><span class="line">    &#x2F;&#x2F; header: &#123;</span><br><span class="line">    &#x2F;&#x2F;     &#39;Content-Type&#39;: &#39;application&#x2F;json&#39;</span><br><span class="line">    &#x2F;&#x2F; &#125;,</span><br><span class="line">    success: function(data) &#123;</span><br><span class="line">        console.log(&#39;这里是success函数&#39; + data);</span><br><span class="line">        console.log(data)</span><br><span class="line">    &#125;,</span><br><span class="line">    &#x2F;&#x2F; error: function(data, xhr) &#123;</span><br><span class="line">    &#x2F;&#x2F;     console.log(&#39;这里是error函数&#39; + data);</span><br><span class="line">    &#x2F;&#x2F;     console.log(xhr);</span><br><span class="line">    &#x2F;&#x2F; &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
 </ul>
-</p>
-      <div class="post-button"><a class="btn" href="/2020/04/21/ajax/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>Read More</a></div>
+
+      </div>
     </div>
   </div>
-  <div class="lx-entry padding">
-    <div>
-      <h2 class="title"><a href="/2020/04/21/hello-world/">Hello World</a></h2>
-      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-04-21</span>
-      <p><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-l.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="#">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>No newer post</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-r.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/04/21/hello-world/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>Hello W...</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-</p>
-      <div class="post-button"><a class="btn" href="/2020/04/21/hello-world/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>Read More</a></div>
-    </div>
-  </div>
-
-
-
+</div>
 
 <footer>
   <div>
@@ -170,8 +174,6 @@
   </div>
 </footer>
 
-  </div>
-</div>
 </div>
 
 <button class="hamburger hamburger--arrow-r" type="button">
