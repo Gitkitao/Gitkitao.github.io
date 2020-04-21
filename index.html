@@ -94,7 +94,7 @@
 <li>搜索框提示文字下拉列表</li>
 </ol>
 <h2 id="Ajax运行环境"><a href="#Ajax运行环境" class="headerlink" title="Ajax运行环境"></a>Ajax运行环境</h2><p>Ajax技术需要运行在网站环境中才能生效。</p>
-<h2 id="Ajax运行原理"><a href="#Ajax运行原理" class="headerlink" title="Ajax运行原理"></a>Ajax运行原理</h2><p>Ajax相当于浏览器发送请求与接收响应的代理人，以现在不影响用户浏览页面的情况下，局部更新页面数据，从而提高用户体验。<br>img1  </p>
+<h2 id="Ajax运行原理"><a href="#Ajax运行原理" class="headerlink" title="Ajax运行原理"></a>Ajax运行原理</h2><p>Ajax相当于浏览器发送请求与接收响应的代理人，以现在不影响用户浏览页面的情况下，局部更新页面数据，从而提高用户体验。<br><img src="images/1.png" alt="ajax 原理"> </p>
 <h2 id="Ajax实现步骤"><a href="#Ajax实现步骤" class="headerlink" title="Ajax实现步骤"></a>Ajax实现步骤</h2><ol>
 <li>创建Ajax对象(请求代理人)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var xhr &#x3D; new XMLHttpRequest();</span><br></pre></td></tr></table></figure></li>
 <li>告诉Ajax请求地址以及请求方式<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(&#39;get&#39;,&#39;http:&#x2F;&#x2F;www.example.com&#39;);</span><br></pre></td></tr></table></figure></li>
@@ -123,7 +123,7 @@
 <li>3请求处理中，通常响应中已经有部分数据可以用了</li>
 <li>4请求已经完成，可以获取并使用服务器端的响应了<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.readyState&#x2F;&#x2F;获取状态码</span><br></pre></td></tr></table></figure>
 在请求发送的过程中状态码是不断变化的，所以在send()方法后调用xhr.readyState无法看到效果所以为了看到这些状态码；onreadystatechange函数绑定在send()前通过判断状态码，然后对响应数据进行操作  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var xhr &#x3D; new XMLHttpRequest();</span><br><span class="line">console.log(xhr.readyState);&#x2F;&#x2F;0</span><br><span class="line">xhr.open(&#39;get&#39;, &#39;http:&#x2F;&#x2F;localhost:3000&#x2F;readystate&#39;);</span><br><span class="line">console.log(xhr.readyState);&#x2F;&#x2F;1</span><br><span class="line">xhr.onreadystatechange &#x3D; function() &#123;&#x2F;&#x2F;2、3、4</span><br><span class="line">    if (xhr.readyState &#x3D;&#x3D; 4) &#123;</span><br><span class="line">        console.log(xhr.responseText);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">xhr.send();</span><br></pre></td></tr></table></figure>
-<h2 id="两种获取服务器端响应方式的对比"><a href="#两种获取服务器端响应方式的对比" class="headerlink" title="两种获取服务器端响应方式的对比"></a>两种获取服务器端响应方式的对比</h2>img<h2 id="Ajax错误处理"><a href="#Ajax错误处理" class="headerlink" title="Ajax错误处理"></a>Ajax错误处理</h2></li>
+<h2 id="两种获取服务器端响应方式的对比"><a href="#两种获取服务器端响应方式的对比" class="headerlink" title="两种获取服务器端响应方式的对比"></a>两种获取服务器端响应方式的对比</h2><img src="images/2.png" alt="两种获取服务器端响应方式的对比"><h2 id="Ajax错误处理"><a href="#Ajax错误处理" class="headerlink" title="Ajax错误处理"></a>Ajax错误处理</h2></li>
 <li>网络畅通，服务器端能接收到请求，服务器端返回的结果不是预期结果(400 (Bad Request))<br>可以判断服务器端返回的状态码，分别进行处理。xhr.status获取http状态码</li>
 <li>网络畅通，服务器端没有接收到请求，返回状态404状态码(404 (Not Found))<br>检查请求地址是否错误</li>
 <li>网络畅通，服务器端能接收到请求，服务器端返回500状态码(500 (Internal Server Error))<br>服务器端错误，找后端程序员进行沟通 </li>
